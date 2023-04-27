@@ -4,21 +4,24 @@ import { useState } from 'react';
 import DownloadIcon from '@mui/icons-material/Download';
 import FullScreenDialog from '../../components/dialog/dialog';
 
+import styles from './main.module.css'
+
 const fetchSite = (link, stateHandler, cB) => {
     stateHandler(true);
 
-    return fetch(link)
+    return fetch(`/api/?link=${link}`)
+        .then(resp => console.log(resp) || resp)
         .then(function (response) {
             return response.text();
         })
         .then(function (html) {
             // const parser = new DOMParser();
-            cB({__html: html});
+            cB({ __html: html });
         })
         .catch(function (err) {
             console.warn('Something went wrong.', err);
         }).finally(() => stateHandler(false));
-    
+
 }
 
 
@@ -29,13 +32,14 @@ const MainPage = () => {
     const [isDialogOpen, setDialogOpen] = useState(false);
 
     const afterFetch = (html) => {
+        console.log(html)
         setFetchedBody(html);
         setDialogOpen(true);
     }
 
     return (
-        <>
-            <TextField 
+        <div className={styles.section}>
+            <TextField
                 disabled={loading}
                 value={sitelink}
                 onChange={(e) => setSitelink(e.target.value)}
@@ -55,8 +59,8 @@ const MainPage = () => {
             >
                 <span>Fetch data</span>
             </LoadingButton>
-            <FullScreenDialog open={isDialogOpen} setOpen={setDialogOpen} html={fetchedBody} link={sitelink}/>
-        </>
+            <FullScreenDialog open={isDialogOpen} setOpen={setDialogOpen} html={fetchedBody} link={sitelink} />
+        </ div>
     );
 };
 

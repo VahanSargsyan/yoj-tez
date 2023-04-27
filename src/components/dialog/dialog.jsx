@@ -35,6 +35,7 @@ const FullScreenDialog = ({ open, setOpen, html, link }) => {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <img src={`https://s2.googleusercontent.com/s2/favicons?domain_url=https://www.${normalizeLink(link)}`} alt="" />
       <Dashboard />
     </Dialog>
   );

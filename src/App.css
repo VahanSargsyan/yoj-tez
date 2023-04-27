@@ -1,4 +1,7 @@
 .chartPaper {
     padding: 20px;
     margin: 20px;
+    width: 40%;
+    display: inline-block;
+    
 }

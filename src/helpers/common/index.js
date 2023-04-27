@@ -1,0 +1,1 @@
+export const normalizeLink = (link) => link.split('://')[1] 
