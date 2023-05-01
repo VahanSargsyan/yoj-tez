@@ -57,7 +57,7 @@ const MainPage = () => {
                 loadingPosition="end"
 
             >
-                <span>Fetch data</span>
+                <span>Գնահատել</span>
             </LoadingButton>
             <FullScreenDialog open={isDialogOpen} setOpen={setDialogOpen} html={fetchedBody} link={sitelink} />
         </ div>

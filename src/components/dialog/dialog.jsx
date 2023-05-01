@@ -5,7 +5,13 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import Dashboard from '../dashboard/dashbord';
+import Overview from '../overview/overview';
+import { normalizeLink } from '../../helpers/common';
+
+import styles from '../dialog/dialog.module.css'
+import SiteMetinfoBox from '../site-metainfo-box/siteMetainfBox';
+
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -35,8 +41,8 @@ const FullScreenDialog = ({ open, setOpen, html, link }) => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <img src={`https://s2.googleusercontent.com/s2/favicons?domain_url=https://www.${normalizeLink(link)}`} alt="" />
-      <Dashboard />
+      <SiteMetinfoBox link={link} html={html} />
+      <Overview />
     </Dialog>
   );
 }
