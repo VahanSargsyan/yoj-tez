@@ -89,12 +89,7 @@ const Overview = () => {
 					lineCap: 'round',
 				}} />
 			</Paper>
-
-
 			</div>
-			
-
-
 		</section>
 	);
 };
